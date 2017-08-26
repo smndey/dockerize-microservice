@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  nginx_proxy:
+    image: nginx
+    container_name: nginx-frontend
+    ports:
+     - "80:80"
+    volumes:
+     - ./nginx_proxy:/etc/nginx/conf.d
+  php:
+    image: wadmiraal/drupal
+    container_name: php-application
+    ports:
+     - "8081:80"
+    volumes:
+     - ./php:/var/www
+  nodejs:
+    build: ./nodejs
+    container_name: nodejs-application
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./nodejs:/usr/src/app
+    ports:
+      - "8080:80"
+
