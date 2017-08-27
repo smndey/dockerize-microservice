@@ -18,7 +18,9 @@ RUN apt-get install -y \
   wget \
   unzip \
   cron \
-  gnupg
+  gnupg \
+  mysql-client\
+  php7.0-xml
 RUN apt-get clean
 
 # Setup PHP.
