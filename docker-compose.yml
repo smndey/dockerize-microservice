@@ -9,12 +9,14 @@ services:
     volumes:
      - ./nginx_proxy:/etc/nginx/conf.d
   php:
-    image: wadmiraal/drupal
+    build: ./php
     container_name: php-application
     ports:
      - "8081:80"
     volumes:
      - ./php:/var/www
+    #command: bash -c "/etc/init.d/apache2 restart"
+    tty: true
   nodejs:
     build: ./nodejs
     container_name: nodejs-application
@@ -24,4 +26,10 @@ services:
       - ./nodejs:/usr/src/app
     ports:
       - "8080:80"
-
+  mysql:
+    image: mysql/mysql-server
+    container_name: mysql-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    volumes:
+      - ./mysql:/home
