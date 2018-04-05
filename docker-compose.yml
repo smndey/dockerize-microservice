@@ -33,7 +33,7 @@ services:
     #   true
     command: sh -c 'npm run debug'
     
-  m-service-2: # Name of the 3rd service
+  m-service-2: # Name of the 3rd service.
     container_name: m-service-2
     build: "./m-service-2"
     user: "node"
